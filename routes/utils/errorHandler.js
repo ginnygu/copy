@@ -16,6 +16,8 @@ const errorHandler = (err) => {
       default:
         message = "something is wrong, contact support";
     }
+  } else if (err.message) {
+    return err.message;
   }
   return message;
 };

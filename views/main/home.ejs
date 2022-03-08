@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include ../partials/head.ejs %>
+	<body>
+		<% include ../partials/nav %>
+		<div class="card-deck">
+			<% if(payload) {%> <% payload.forEach((data)=>{ %>
+			<div class="deck-tile">
+				<div class="card-body">
+					<h5 class="card-title"><%= data.title %></h5>
+					<p class="date">
+						<% let date = data.createdAt.toString().substring(0, 15)%> <%= date
+						%>
+					</p>
+					<p class="card-text">
+						<br />
+						<%= data.post %>
+					</p>
+					<button class="comment-length">
+						<%= data.commentHistory.length %>
+					</button>
+					<br />
+					<p class="author">Author: <%= data.owner.username %></p>
+				</div>
+			</div>
+			<% }) %> <% } %>
+		</div>
+		<% include ../partials/script %>
+	</body>
+</html>
